@@ -82,7 +82,7 @@ int main() {
             case 1:
                 break;
             default:
-                grid[x][y]++;
+                grid[x][y] += 1;
         }
 
         switch (d) {

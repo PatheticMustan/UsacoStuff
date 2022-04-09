@@ -3,6 +3,12 @@ using namespace std;
 
 enum Direction { up, left, down, right };
 
+ // i hate this
+bool stupidSort(const pair<int,int> a, const pair<int,int> b) {
+    if (a.first != b.first) return a.first < b.first;
+    return a.second < b.second;
+}
+
 int main() {
     // r, c, n (/), m (\) 
     int r, c, n, m;
@@ -72,7 +78,9 @@ int main() {
                     case Direction::right: d = Direction::down; break;
                 }
                 break;
-
+            
+            case 1:
+                break;
             default:
                 grid[x][y]++;
         }
@@ -126,8 +134,12 @@ int main() {
                 }
                 break;
 
+            case 2:
+                break;
+            case 3:
+                break;
             default:
-                grid[x][y]++;
+                grid[x][y] += 2;
         }
 
         switch (d) {
@@ -144,12 +156,13 @@ int main() {
 
 
 
-    vector<string> v {};
+    vector<pair<int, int>> v {};
     for (int i=0; i<r; i++) {
         for (int o=0; o<c; o++) {
             //cout << grid[i][o];
-            if (grid[i][o] == 2) {
-                v.push_back(to_string(i+1) + " " + to_string(o+1));
+            if (grid[i][o] == 3) {
+                // remember to add 1 to x and y when you're finished
+                v.push_back(make_pair(i+1, o+1));
             }
         }
         //cout << endl;
@@ -159,11 +172,9 @@ int main() {
         cout << "Impossible";
         return 0;
     }
-    sort(v.begin(), v.end());
+    sort(v.begin(), v.end(), stupidSort);
     cout << v.size() << endl;
-    for (const auto& s : v) cout << s << endl;
-
-    // remember to add 1 to x and y when you're finished
+    for (const auto& s : v) cout << s.first << " " << s.second << endl;
 
     return 0;
 }

@@ -63,7 +63,6 @@ int main() {
     // Alpha Lyrae...!
     long long iLoveStars[11];
 
-    for (int i=0; i<11; i++) 
     for (int i=0; i<11; i++) {
         iLoveStars[i] = 0;
         for (int o=0; o<11; o++){
